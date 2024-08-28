@@ -1,14 +1,13 @@
 package main
 
 import (
-	"starfield/internals/helpers"
 	"starfield/internals/models"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 func main() {
-	var stars [800]models.Star
+	var stars [1000]models.Star
 	rl.InitWindow(700, 700, "Starfield")
 	screenWidth := float32(rl.GetScreenWidth())
 	screenHeight := float32(rl.GetScreenHeight())
@@ -19,11 +18,11 @@ func main() {
 	}
 
 	for !rl.WindowShouldClose() {
-		speed := helpers.MapValue(rl.GetMousePosition().X, 0, float32(rl.GetScreenWidth()), 0, 50)
+		speed := rl.Remap(rl.GetMousePosition().X, 0, float32(rl.GetScreenWidth()), 0, 50)
 		rl.BeginDrawing()
 		rl.ClearBackground(rl.Black)
 		rl.BeginMode2D(rl.Camera2D{
-			Target:   rl.NewVector2(float32(screenWidth/2), float32(screenHeight/2)),
+			Target:   rl.NewVector2(0, 0),
 			Offset:   rl.NewVector2(float32(screenWidth/2), float32(screenHeight/2)),
 			Rotation: 0,
 			Zoom:     1.0,
