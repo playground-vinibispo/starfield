@@ -13,7 +13,7 @@ func TestNewStar(t *testing.T) {
 }
 
 func TestStarUpdate(t *testing.T) {
-	star := models.NewStar()
+	star := models.Star{X: 0, Y: 0, Z: 100, Pz: 100}
 	firstZ := star.Z
 	star.Update(1)
 	if star.Z == firstZ {
